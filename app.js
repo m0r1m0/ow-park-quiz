@@ -18,7 +18,10 @@ class OverwatchPerkQuiz {
     initializeElements() {
         // DOM要素の取得
         this.heroNameEl = document.getElementById('hero-name');
+        this.heroIconEl = document.getElementById('hero-icon');
         this.perkNameEl = document.getElementById('perk-name');
+        this.perkIconEl = document.getElementById('perk-icon');
+        this.perkDescriptionEl = document.getElementById('perk-description');
         this.scoreEl = document.getElementById('score');
         this.correctEl = document.getElementById('correct');
         this.incorrectEl = document.getElementById('incorrect');
@@ -32,12 +35,23 @@ class OverwatchPerkQuiz {
     initializeQuestions() {
         // すべてのヒーローとパークから問題を生成
         this.allQuestions = [];
-        heroData.forEach(heroObj => {
-            heroObj.perks.forEach(perk => {
-                this.allQuestions.push({
-                    hero: heroObj.hero,
-                    perkName: perk.name,
-                    correctPosition: perk.position
+        const roles = ['tanks', 'damage', 'support'];
+
+        roles.forEach(role => {
+            heroData.heroes[role].forEach(heroObj => {
+                // マイナーパークとメジャーパークの両方を処理
+                ['minor', 'major'].forEach(perkType => {
+                    heroObj.perks[perkType].forEach(perk => {
+                        this.allQuestions.push({
+                            hero: heroObj.name,
+                            heroIcon: heroObj.icon,
+                            perkName: perk.name,
+                            perkIcon: perk.icon,
+                            perkDescription: perk.description,
+                            correctPosition: perk.position,
+                            perkType: perkType
+                        });
+                    });
                 });
             });
         });
@@ -67,7 +81,28 @@ class OverwatchPerkQuiz {
 
         // 画面の更新
         this.heroNameEl.textContent = this.currentQuestion.hero;
+
+        // ヒーローアイコンの設定
+        if (this.currentQuestion.heroIcon) {
+            this.heroIconEl.src = this.currentQuestion.heroIcon;
+            this.heroIconEl.style.display = 'block';
+        } else {
+            this.heroIconEl.style.display = 'none';
+        }
+
         this.perkNameEl.textContent = this.currentQuestion.perkName;
+
+        // パークアイコンの設定
+        if (this.currentQuestion.perkIcon) {
+            this.perkIconEl.src = this.currentQuestion.perkIcon;
+            this.perkIconEl.style.display = 'block';
+        } else {
+            this.perkIconEl.style.display = 'none';
+        }
+
+        // パークの説明を設定
+        this.perkDescriptionEl.textContent = this.currentQuestion.perkDescription;
+
         this.feedbackEl.textContent = '';
         this.feedbackEl.className = 'feedback';
 
@@ -88,12 +123,12 @@ class OverwatchPerkQuiz {
         if (isCorrect) {
             this.correct++;
             this.score += 10;
-            this.feedbackEl.textContent = '🎉 正解！';
+            this.feedbackEl.textContent = '正解！';
             this.feedbackEl.className = 'feedback correct';
         } else {
             this.incorrect++;
             const correctSide = this.currentQuestion.correctPosition === 'left' ? '左' : '右';
-            this.feedbackEl.textContent = `❌ 不正解... 正解は「${correctSide}」でした`;
+            this.feedbackEl.textContent = `不正解... 正解は「${correctSide}」でした`;
             this.feedbackEl.className = 'feedback incorrect';
         }
 
