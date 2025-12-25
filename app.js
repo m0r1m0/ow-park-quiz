@@ -18,9 +18,8 @@ class OverwatchPerkQuiz {
     initializeElements() {
         // DOM要素の取得
         this.heroNameEl = document.getElementById('hero-name');
-        this.heroIconEl = document.getElementById('hero-icon');
-        this.perkNameEl = document.getElementById('perk-name');
         this.perkIconEl = document.getElementById('perk-icon');
+        this.perkNameEl = document.getElementById('perk-name');
         this.perkDescriptionEl = document.getElementById('perk-description');
         this.scoreEl = document.getElementById('score');
         this.correctEl = document.getElementById('correct');
@@ -43,8 +42,7 @@ class OverwatchPerkQuiz {
                 ['minor', 'major'].forEach(perkType => {
                     heroObj.perks[perkType].forEach(perk => {
                         this.allQuestions.push({
-                            hero: heroObj.name,
-                            heroIcon: heroObj.icon,
+                            hero: heroObj.nameJa || heroObj.name,
                             perkName: perk.name,
                             perkIcon: perk.icon,
                             perkDescription: perk.description,
@@ -81,27 +79,20 @@ class OverwatchPerkQuiz {
 
         // 画面の更新
         this.heroNameEl.textContent = this.currentQuestion.hero;
-
-        // ヒーローアイコンの設定
-        if (this.currentQuestion.heroIcon) {
-            this.heroIconEl.src = this.currentQuestion.heroIcon;
-            this.heroIconEl.style.display = 'block';
-        } else {
-            this.heroIconEl.style.display = 'none';
-        }
-
         this.perkNameEl.textContent = this.currentQuestion.perkName;
+        this.perkDescriptionEl.textContent = this.currentQuestion.perkDescription;
 
         // パークアイコンの設定
         if (this.currentQuestion.perkIcon) {
             this.perkIconEl.src = this.currentQuestion.perkIcon;
             this.perkIconEl.style.display = 'block';
+            this.perkIconEl.onerror = () => {
+                // 画像の読み込みに失敗した場合は非表示
+                this.perkIconEl.style.display = 'none';
+            };
         } else {
             this.perkIconEl.style.display = 'none';
         }
-
-        // パークの説明を設定
-        this.perkDescriptionEl.textContent = this.currentQuestion.perkDescription;
 
         this.feedbackEl.textContent = '';
         this.feedbackEl.className = 'feedback';
