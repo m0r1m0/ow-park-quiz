@@ -94,6 +94,15 @@ h1 {
     border-radius: 15px;
 }
 
+.perk-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 3px solid #764ba2;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 .perk-name {
     font-size: 2rem;
     font-weight: bold;
@@ -230,6 +239,11 @@ h1 {
 
     .perk-section {
         padding: 15px;
+    }
+
+    .perk-icon {
+        width: 60px;
+        height: 60px;
     }
 
     .perk-name {

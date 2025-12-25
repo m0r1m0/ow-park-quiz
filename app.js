@@ -18,6 +18,7 @@ class OverwatchPerkQuiz {
     initializeElements() {
         // DOM要素の取得
         this.heroNameEl = document.getElementById('hero-name');
+        this.perkIconEl = document.getElementById('perk-icon');
         this.perkNameEl = document.getElementById('perk-name');
         this.perkDescriptionEl = document.getElementById('perk-description');
         this.scoreEl = document.getElementById('score');
@@ -43,6 +44,7 @@ class OverwatchPerkQuiz {
                         this.allQuestions.push({
                             hero: heroObj.nameJa || heroObj.name,
                             perkName: perk.name,
+                            perkIcon: perk.icon,
                             perkDescription: perk.description,
                             correctPosition: perk.position,
                             perkType: perkType
@@ -79,6 +81,18 @@ class OverwatchPerkQuiz {
         this.heroNameEl.textContent = this.currentQuestion.hero;
         this.perkNameEl.textContent = this.currentQuestion.perkName;
         this.perkDescriptionEl.textContent = this.currentQuestion.perkDescription;
+
+        // パークアイコンの設定
+        if (this.currentQuestion.perkIcon) {
+            this.perkIconEl.src = this.currentQuestion.perkIcon;
+            this.perkIconEl.style.display = 'block';
+            this.perkIconEl.onerror = () => {
+                // 画像の読み込みに失敗した場合は非表示
+                this.perkIconEl.style.display = 'none';
+            };
+        } else {
+            this.perkIconEl.style.display = 'none';
+        }
 
         this.feedbackEl.textContent = '';
         this.feedbackEl.className = 'feedback';

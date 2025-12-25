@@ -11,11 +11,13 @@ const heroData = {
           "minor": [
             {
               "name": "バニーパワー",
+              "icon": "https://d15f34w2p8l1cc.cloudfront.net/overwatch/aa2e9dd7e16c2c6adca8097c53ddeb41cac0f86d3ae9b203c4c3032ea92f7f86.png",
               "description": "脱出時に75の一時的なオーバーヘルスを獲得し、メック召喚のダメージ範囲が50%増加",
               "position": "left"
             },
             {
               "name": "延長ブースター",
+              "icon": "https://d15f34w2p8l1cc.cloudfront.net/overwatch/e31b6a7d4a01d0c50a52c66f5b60dd4a0d67e67856fca50a0bcdec0c4c6f7f4a.png",
               "description": "ブースターで敵にヒットすると100%増加したダメージを与え、持続時間が0.5秒延長",
               "position": "right"
             }
@@ -23,11 +25,13 @@ const heroData = {
           "major": [
             {
               "name": "シールドシステム",
+              "icon": "https://d15f34w2p8l1cc.cloudfront.net/overwatch/cb3ab78d7a1d8a2c76e1ea7db7c1b9b6c6e7a6c7c7c7c7c7c7c7c7c7c7c7c7c7.png",
               "description": "150のヘルスをシールドに変換。ディフェンスマトリックスは吸収ダメージの25%に基づいてシールドを回復",
               "position": "left"
             },
             {
               "name": "精密フュージョン",
+              "icon": "https://d15f34w2p8l1cc.cloudfront.net/overwatch/9f7e8d6c5b4a3c2b1d0e9f8c7d6e5a4b3c2d1e0f9c8d7e6f5a4b3c2d1e0f9c8.png",
               "description": "リロードボタンを押すとフュージョンキャノンの拡散が3秒間75%減少",
               "position": "right"
             }
