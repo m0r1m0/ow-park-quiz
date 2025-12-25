@@ -76,27 +76,11 @@ h1 {
     text-align: center;
 }
 
-.hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.hero-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 3px solid #667eea;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .hero-name {
     font-size: 1.8rem;
     font-weight: bold;
     color: #667eea;
+    margin-bottom: 25px;
 }
 
 .perk-section {
@@ -110,15 +94,6 @@ h1 {
     border-radius: 15px;
 }
 
-.perk-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 3px solid #764ba2;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
 .perk-name {
     font-size: 2rem;
     font-weight: bold;
@@ -126,9 +101,9 @@ h1 {
 }
 
 .perk-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #555;
-    line-height: 1.6;
+    line-height: 1.7;
     max-width: 600px;
     text-align: center;
 }
@@ -249,16 +224,6 @@ h1 {
         padding: 20px;
     }
 
-    .hero-section {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .hero-icon {
-        width: 50px;
-        height: 50px;
-    }
-
     .hero-name {
         font-size: 1.5rem;
     }
@@ -267,17 +232,12 @@ h1 {
         padding: 15px;
     }
 
-    .perk-icon {
-        width: 60px;
-        height: 60px;
-    }
-
     .perk-name {
         font-size: 1.5rem;
     }
 
     .perk-description {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .button-container {
